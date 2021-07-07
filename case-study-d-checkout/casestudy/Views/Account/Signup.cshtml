@@ -1,0 +1,121 @@
+﻿@model casestudy.User
+
+@{ Layout = null; }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Signup</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="../content/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../content/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../content/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../content/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../contentvendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../content/css/util.css">
+    <link rel="stylesheet" type="text/css" href="../content/css/main.css">
+    <!--===============================================================================================-->
+
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+<div class="limiter">
+    <div class="container-login100 ">
+        <div class="wrap-login100 ">
+            @Html.AntiForgeryToken()
+            <div class="column1" width="30%">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img src="../content/Images/Deloitte_Logo.jpeg" alt="IMG">
+                </div>
+            </div>
+            <div class="column2" width="70%">
+                <form class="login100-form  validate-form column2">
+                    <span class="login100-form-title">
+                        Member Signup
+                    </span>
+
+
+                    <div class=" wrap-input100 validate-input group " data-validate="Valid email is required: ex@abc.xyz">
+                        @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "" })
+                        
+
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                        <span class="focus-input100"></span>
+
+                    </div>
+
+
+                    <div class=" wrap-input100 validate-input group" data-validate="Password is required">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "" })
+                        
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        <span class="focus-input100"></span>
+                    </div>
+                    
+
+                    <div class="wrap-input100 validate-input group" data-validate="name is required">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "" })
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input group" data-validate="mobile number is required">
+                        @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "" })
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input group" data-validate="empid is required">
+                        @Html.LabelFor(model => model.Empid, htmlAttributes: new { @class = "" })
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        @Html.EditorFor(model => model.Empid, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Empid, "", new { @class = "text-danger" })
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <input type="submit" value="Sign up" class="login100-form-btn" />
+                    </div>
+
+
+
+                    <div align="center">
+                        @Html.ActionLink("Already a registered user?", "login")
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> <!--===============================================================================================-->
+                                <script src="../content/vendor/jquery/jquery-3.2.1.min.js"></script> <!--===============================================================================================-->
+                                                                <script src="../content/vendor/bootstrap/js/popper.js"></script>
+                                                                                <script src="../content/vendor/bootstrap/js/bootstrap.min.js"></script> <!--===============================================================================================-->
+                                                                                                                <script src="../content/vendor/select2/select2.min.js"></script> <!--===============================================================================================-->
+                                                                                                                                                <script src="../content/vendor/tilt/tilt.jquery.min.js"></script>
+                                                                                                                                                                <script>$('.js-tilt').tilt({
+			        scale: 1.1
+		        })</script> <!--===============================================================================================-->
+                                                                                                                                                                                                <script src="../content/js/main.js"></script>}
+</body>
+</html>

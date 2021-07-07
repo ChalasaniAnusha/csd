@@ -1,0 +1,163 @@
+﻿@model IEnumerable<casestudy.Filedata>
+@{ Layout = null; }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Upload</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="../content/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../content/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../content/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../content/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../content/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../content/css/util.css">
+    <link rel="stylesheet" type="text/css" href="../content/css/main.css">
+    <!--===============================================================================================-->
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+
+        /* Modify the background color */
+
+        .navbar-custom {
+            background-color: #d3d3d3;
+        }
+            /* Modify brand and text color */
+
+            .navbar-custom .navbar-brand,
+            .navbar-custom .navbar-text {
+                color: black;
+            }
+        #example2 {
+            background-color: ghostwhite;
+            border: 1px solid;
+            padding: 5px;
+            padding: 70px 70px 70px 70px;
+            border-width: 2px;
+            margin: 50px 100px 100px 100px;
+        }
+        footer {
+            text-align: center;
+            padding: 3px;
+            background-color: darkgrey;
+            color: white;
+        }
+        #box1{
+            border:1px solid black;
+            background-color:white;
+        }
+    </style>
+
+</head>
+<body style="background-color: #3C1053FF ">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom py-3">
+        <div class="container-fluid">
+            @Html.ActionLink("Deloitte.", "Index", "Users", new { area = "" }, new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse navbar-right" id="navbarNavDropdown">
+               
+                <ul class="navbar-nav px-30 navbar-right">
+                    <li class="nav-item px-3">
+                        <a class="nav-link" href="/Users/Index2">Dashboard </a>
+                    </li>
+
+                    <li class="nav-item px-3">
+                        <a class="nav-link" href="/Users/Upload">Upload</a>
+
+
+                    </li>
+
+                    <li class="nav-item px-3">
+                        <a class="nav-link" href="/Users/Edit/?id=@TempData["name"]">User Management </a>
+
+                    </li>
+
+
+
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                                <li class="nav-item px-3"><a class="nav-link">Hello @User.Identity.Name</a></li>
+                                <li class="nav-item px-3"><a class="nav-link" href="/Account/logout">Logout</a></li>
+                    }
+                    else
+                    {
+                                <li class="nav-item px-3">@Html.ActionLink("login", "login", "Account")</li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="example2">
+        <div id="box1">
+            <br />
+            <h1 align="center">Welcome  @User.Identity.Name!</h1>
+            <h3 align="center">Traffic Predictor</h3>
+            <br />
+        </div>
+        <br />
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">@Html.DisplayNameFor(model => model.Name)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FileName)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.UploadDate)</th>
+                    
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.FileName</td>
+                        <td>@item.UploadDate</td>
+
+
+
+
+                    </tr>
+                }
+            </tbody>
+
+
+
+        </table>
+        <a class="btn  btn-outline-dark" href="/Users/read" role="button">View</a>
+
+    </div>
+    <footer>
+        <p><h4>Footer links and menu items</h4></p>
+        <p>Copyright &copy;Deloitte.com|2021</p>
+    </footer>
+
+    
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+</html>

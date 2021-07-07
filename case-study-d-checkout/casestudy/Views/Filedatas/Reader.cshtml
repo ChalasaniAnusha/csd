@@ -1,0 +1,28 @@
+﻿@model IEnumerable<casestudy.Models.submission>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>reader</title>
+</head>
+<body>
+    
+    @foreach(var item in Model)
+    {
+
+        @item.Id
+        @item.Traffic_Volume
+        <br/>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

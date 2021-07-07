@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        .navbar-custom {
+            background-color: #d3d3d3;
+        }
+            /* Modify brand and text color */
+
+            .navbar-custom .navbar-brand,
+            .navbar-custom .navbar-text {
+                color: black;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="navbar navbar-expand-lg navbar-light navbar-custom ">
+        <div class="container-fluid">
+            @Html.ActionLink("Deloitte.", "Index", "Users", new { area = "" }, new { @class = "navbar-brand" })
+            <!--<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>-->
+
+            <div class="navbar-collapse collapse navbar-right" id="navbarNavDropdown">
+
+
+                <ul class="nav navbar-nav px-30 navbar-right">
+                    <li class="nav-item px-3">@Html.ActionLink("Dashboard", "Index", "Users")</li>
+                    <li class="nav-item px-3">@Html.ActionLink("Upload", "Upload", "Users")</li>
+                    <li class="nav-item px-3">@Html.ActionLink("User Management", "Create", "Users")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item px-3"><a>Hello @User.Identity.Name</a></li>
+                        <li class="nav-item px-3">@Html.ActionLink("Logout", "Logout", "Account")</li>
+                    }
+                    else
+                    {
+                        <li class="nav-item px-3">@Html.ActionLink("login", "login", "Account")</li>
+                    }
+                </ul>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content ">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>Copyright &copy;Deloitte.com|2021</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

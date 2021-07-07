@@ -1,0 +1,53 @@
+﻿@model IEnumerable<casestudy.Filedata>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+   
+</head>
+<body>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    @Html.TextBox("txtname")
+    <input type="button" value="Add" />
+    <table id="dataTable"></table>
+
+
+    <script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jque"></script>
+
+    <script>
+
+
+
+        $(document).ready(function () {
+            $("#btnAdd").click(function () {
+                var data = $("#txtname").val();
+
+
+                $.ajax({
+                    url: "Filedatas/read",
+                    dataType: "html",
+                    data: { dataparam: id },
+                    success: function (result) {
+                        $('#filedata').append(result);// your partial view rendering with <tr></tr>, becuase we do not know home many nos td tr has at this timme
+                    }
+                });
+
+
+            });
+    </script>
+
+
+</body>
+</html>

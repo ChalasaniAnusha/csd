@@ -1,0 +1,88 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>preview</title>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <style>
+        table{
+            border-collapse: collapse;
+            font-family: helvetica
+        }
+
+        td, th {
+            border: 1px solid;
+            padding: 10px;
+            min-width: 200px;
+            background: white;
+            box-sizing: border-box;
+            text-align: left;
+        }
+        th {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            background: hsl(20, 50%, 70%);
+        }
+        tbody {
+            overflow: scroll;
+            height: 500px;
+        }
+        .table-container {
+            position: relative;
+            max-height: 500px;
+            width: 1500px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="tabplace" class="table-container">
+        <h2> Click the button below to verify the doc you Uploaded</h2>
+    </div>
+    <div>
+       <h3> @Html.ActionLink("Back to upload", "Upload") &emsp; &emsp; <button onclick="trender('@TempData["upfilen"]')">View doc</button></h3>
+    </div>
+    <script>
+        function trender(fname) {
+            fname = '../User_Files/temp/' + fname;
+            console.log(fname)
+            $.ajax({
+                url: fname,
+                async: true,
+                type: "GET",
+                dataType: "text",
+                success: function (data) {
+                    var employee_data = data.split(/\r?\n|\r/);
+                    var table_data = '<h2>Document you uploaded:</h2><table cellspacing="0" cellpadding="0">';
+                    for (var count = 0; count < 10; count++) {
+                        var cell_data = employee_data[count].split(',');
+
+                        table_data += '<tr>';
+                        for (var cell_count = 0; cell_count < cell_data.length; cell_count++) {
+                            if (count === 0) {
+                                table_data += '<th><span>' + cell_data[cell_count] + '</span></th>';
+                            }
+                            else {
+                                table_data += '<td>' + cell_data[cell_count] + '</td>';
+                            }
+                        } table_data += '</tr>';
+
+                    } table_data += '</table></div>';
+                    $('#tabplace').html(table_data);
+
+                }
+            });
+
+        }
+    </script>
+
+</body>
+</html>

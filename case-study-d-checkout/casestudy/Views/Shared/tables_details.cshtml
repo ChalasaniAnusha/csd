@@ -1,0 +1,18 @@
+﻿@model IEnumerable<casestudy.Models.submission>
+    <table class="="table>
+        <tr><th>Id</th>
+        <th>Traffic Volume</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                
+            
+                <td>@item.Traffic_Volume</td> 
+            </tr>
+        }
+
+        </table>
+    
+        
